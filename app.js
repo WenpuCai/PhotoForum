@@ -53,9 +53,9 @@ app.use(indexRoutes);
 app.use("/campgrounds",campgroundRoutes); // append "/campgrounds" before the routes
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("The Server has started !");
-});
-// var listener = app.listen(8888, function(){
-//     console.log('Listening on port ' + listener.address().port); //Listening on port 8888
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log("The Server has started !");
 // });
+var listener = app.listen(8888, function(){
+    console.log('Listening on port ' + listener.address().port); //Listening on port 8888
+});
