@@ -19,9 +19,9 @@ var commentRoutes    = require("./routes/comments"),
 //seedDB();
 // in the command line: export DATABASEURL=mongodb://localhost/photo
 // to check if this work by adding a line: console.log(process.env.DATABASEURL); 
- mongoose.connect(process.env.DATABASEURL); // 1. good for devloper to hide local address 2. save some trouble because it automatically decide which DB to run
+ // mongoose.connect(process.env.DATABASEURL); // 1. good for devloper to hide local address 2. save some trouble because it automatically decide which DB to run
 // mongoose.connect("mongodb://localhost/photo");
-//  mongoose.connect("mongodb://admin:admin@ds113046.mlab.com:13046/test_mangodb");
+ mongoose.connect("mongodb://admin:admin@ds125716.mlab.com:25716/photoforum");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
