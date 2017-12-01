@@ -82,8 +82,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
     var lat = data.results[0].geometry.location.lat;
     var lng = data.results[0].geometry.location.lng;
     var location = data.results[0].formatted_address;
-    var newData = {name: req.body.name, image: req.body.image, description: req.body.description, price: req.body.price, location: location, lat: lat, lng: lng};
-    //  find and update the correct campground
+    var newData = {name: req.body.name, image: req.body.image, description: req.body.description, price: req.body.price, location: location, lat: lat, lng: lng};    //  find and update the correct campground
     //  findByIdAndUpdate(id, data, recall); var data = {name: req.body.name, image: req.body.image} -> Just wrap this data in form to a groundcamp[ ] array
     Campground.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, updatedCampground){
         if(err){
