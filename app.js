@@ -8,7 +8,7 @@ var express     = require("express"),
     methodOverride = require("method-override"),
     User        = require("./models/user"),          //  "./" means this dir
     Photo  = require("./models/photo"),    //  SCHEMA STEP
-    Comment     = require("./models/comment"),
+    Comment     = require("./models/comment");
     //seedDB      = require("./seeds");
 
 //  requiring routes
