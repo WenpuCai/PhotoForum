@@ -1,5 +1,5 @@
 var mongoose = require("mongoose"),
-Campground = require("./models/campground"),
+Photo = require("./models/photo"),
 Comment = require("./models/comment");
 
 var data = [
@@ -17,36 +17,36 @@ var data = [
     }
 ]
 /*
-1.  Remove all campgrounds
-2.  Add a few campgrounds, CANNOT be written outside else, because what next wont be executed.
+1.  Remove all photos
+2.  Add a few photos, CANNOT be written outside else, because what next wont be executed.
 3.  Add a few comments
 */
 function seedDB() {
-    //  Remove all campgrounds
-    Campground.remove({}, function(err){
+    //  Remove all photos
+    Photo.remove({}, function(err){
     //     if (err) {
     //         console.log(err);
     //     } else {
-             console.log("Remove all campgrounds !");
-    // //  Add a few campgrounds, CANNOT be written outside else, because what next wont be executed.
+             console.log("Remove all photos !");
+    // //  Add a few photos, CANNOT be written outside else, because what next wont be executed.
     //         data.forEach(function(seed){
-    //             Campground.create(seed, function(err, campground){
+    //             Photo.create(seed, function(err, photo){
     //                 if (err) {
     //                     console.log(err);
     //                 } else {
-    //                     console.log("added a campground !");
+    //                     console.log("added a photo !");
     //                     //  Add a few comments
     //                     Comment.create(
     //                         {
     //                             text: "This is a great pic !",
     //                             author: "Homer"
     //                         }, function(err, comment) {
-    //                   // associate to campground
+    //                   // associate to photo
     //                             if (err) {
     //                                 console.log(err);
     //                             } else {
-    //                                 campground.comments.push(comment);
-    //                                 campground.save(); 
+    //                                 photo.comments.push(comment);
+    //                                 photo.save(); 
     //                                 console.log("Created new comments");
     //                             }
     //                         }
@@ -61,21 +61,21 @@ function seedDB() {
 module.exports = seedDB;
 
 /*
-Campground.create({
+Photo.create({
     name: "Tokyo River", 
     image: "http://www.photosforclass.com/download/15047197338",
     description: "This is a beautiful river in Tokyo, JP"
-}, function(err, campground){
+}, function(err, photo){
     if (err) {
         console.log(err)
     } else {
-        console.log("NEWLY CREATED CAMPGROUND:")
-        console.log(campground)
+        console.log("NEWLY CREATED photo:")
+        console.log(photo)
     }
 })
 */
 /*
-var campgrounds = [
+var photos = [
         {name: "Tokyo River", image: "http://www.photosforclass.com/download/15047197338"},
         {name: "Tokyo Tower", image: "http://www.photosforclass.com/download/14602900111"},
         {name: "Tokyo Woman", image: "http://www.photosforclass.com/download/14807067238"},
