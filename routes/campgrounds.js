@@ -32,7 +32,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     };
 
     geocoder.geocode(req.body.location, function (err, data) {
-        if (data.results !== undefined) {
+        if (results !== undefined) {
             var lat = data.results[0].geometry.location.lat;
             var lng = data.results[0].geometry.location.lng;
             var location = data.results[0].formatted_address;
@@ -84,7 +84,7 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res) 
 //  UPDATE CAMPGROUND ROUTE
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
-    if (data.results !== undefined) {
+    if (results !== undefined) {
         var lat = data.results[0].geometry.location.lat;
         var lng = data.results[0].geometry.location.lng;
         var location = data.results[0].formatted_address;
