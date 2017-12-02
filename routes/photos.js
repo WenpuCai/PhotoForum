@@ -64,7 +64,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
 //  this should goes last
 router.get("/:id", function(req, res) {
     //  find the campgound with provided ID
-    Photo.findById(req.params.id).populate("comments").exec(function(err, foundphoto){
+    Photo.findById(req.params.id).populate("comments").exec(function(err, foundPhoto){
         if (err) {
             console.log(err);
         } else {
