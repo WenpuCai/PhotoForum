@@ -7,13 +7,13 @@ var express     = require("express"),
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
     User        = require("./models/user"),          //  "./" means this dir
-    Campground  = require("./models/campground"),    //  SCHEMA STEP
+    Photo  = require("./models/photo"),    //  SCHEMA STEP
     Comment     = require("./models/comment"),
     seedDB      = require("./seeds");
 
 //  requiring routes
 var commentRoutes    = require("./routes/comments"),
-    campgroundRoutes = require("./routes/campgrounds"),
+    photoRoutes = require("./routes/photos"),
     indexRoutes      = require("./routes/index")
     
 //seedDB();
@@ -53,8 +53,8 @@ app.use(function(req, res, next){
 });// app.use(middleware) whatever function we provide in it will be called on every route
 
 app.use(indexRoutes);
-app.use("/campgrounds",campgroundRoutes); // append "/campgrounds" before the routes
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/photos",photoRoutes); // append "/photos" before the routes
+app.use("/photos/:id/comments", commentRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("The Server has started !");

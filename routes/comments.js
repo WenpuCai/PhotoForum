@@ -2,26 +2,26 @@ var express = require("express"),
     router   = express.Router({mergeParams: true}); // Add all the routes into router rather than app
 
 var Comment     = require("../models/comment"),
-    Campground  = require("../models/campground"),
+    Photo  = require("../models/photo"),
     middleware  = require("../middleware");
 
 // Comments New
 router.get("/new", middleware.isLoggedIn, function(req, res) {
     // console.log(req.params.id) -> null means req.params.id cannot make it here
-    //  find campground by id
-    Campground.findById(req.params.id, function(err, campground){ // "campground" in DB, specify it or inthe ejs file campgrund._id will not be found
+    //  find photo by id
+    Photo.findById(req.params.id, function(err, photo){ // "photo" in DB, specify it or inthe ejs file campgrund._id will not be found
         if (err) {
             console.log(err);
         } else {
-            res.render("comments/new", {campground: campground}); // param "campground" <- "campground" in DB
+            res.render("comments/new", {photo: photo}); // param "photo" <- "photo" in DB
         }
     });
 });
 
 // Comments Create
 router.post("/", middleware.isLoggedIn, function(req, res) {
-    //  lookup campground using ID
-    Campground.findById(req.params.id, function(err, campground) {
+    //  lookup photo using ID
+    Photo.findById(req.params.id, function(err, photo) {
         if (err) {
             console.log(err);
             res.redirect("/campgrounds");
@@ -34,10 +34,10 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
                     comment.author.id = req.user._id;
                     comment.author.username = req.user.username;
                     comment.save();
-                    campground.comments.push(comment);
-                    campground.save();
+                    photo.comments.push(comment);
+                    photo.save();
                     req.flash("success", "Successfully added comment!");
-                    res.redirect("/campgrounds/" + campground._id);
+                    res.redirect("/campgrounds/" + photo._id);
                 }
             });
         }
@@ -56,7 +56,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 
 //  COMMENT EDIT ROUTE
 router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
-    // we need comment to be sent to ejs file for using its text and id, but only need id of campground, so pass comment and campground_id
+    // we need comment to be sent to ejs file for using its text and id, but only need id of photo, so pass comment and campground_id
     Comment.findById(req.params.comment_id, function(err, foundComment) {
         if (err) {
             res.redirect("back");

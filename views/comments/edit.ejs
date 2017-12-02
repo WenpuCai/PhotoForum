@@ -1,9 +1,9 @@
 <% include ../partials/header %>
 
     <div class="row">
-        <h1 style="text-align: center">Edit <%= campground.name %></h1>
+        <h1 style="text-align: center">Edit <%= photo.name %></h1>
         <div style="width: 30%; margin: 25px auto;"><!--Center the components-->
-            <form action="/campgrounds/<%= campground._id %>/comments/<%= comment._id%>?_method=PUT" method="POST"> <!-- sent to the routes defined in app.js -->
+            <form action="/photos/<%= photo._id %>/comments/<%= comment._id%>?_method=PUT" method="POST"> <!-- sent to the routes defined in app.js -->
                 <div class="form-group"><!--Give some space among the components-->
                     <input class="form-control" type="text" name="comment[text]" placeholder="text">
                 </div>
@@ -11,7 +11,7 @@
                     <button class="btn-lg btn-primary btn-block">Submit!</button><!--btn-block let button take entire line-->
                 </div>
             </form>
-            <a href="/campgrounds">Go Back</a>
+            <a href="/photos">Go Back</a>
         </div>
     </div>
 

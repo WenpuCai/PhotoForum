@@ -1,22 +1,22 @@
 //  ALL THE MIDDLEWARE GOES HERE
 var middlewareObj = {};
 
-var Campground = require("../models/campground"),
+var Photo = require("../models/photo"),
     Comment    = require("../models/comment");
 
-middlewareObj.checkCampgroundOwnership = function(req, res, next) {
+middlewareObj.checkPhotoOwnership = function(req, res, next) {
     //  is user logged in ?
     if (req.isAuthenticated()) {
-        Campground.findById(req.params.id, function(err, foundCampground){
+        Photo.findById(req.params.id, function(err, foundPhoto){
             if (err) {
-                req.flash("error", "Campground not found!");
+                req.flash("error", "Photo not found!");
                 res.redirect("back");
             } else {
-                //  does the user own the campground ?
-                // foundCampground.author.id is a mongoose object vs. req.user._id is a String
-                // console.log(foundCampground.author.id);
+                //  does the user own the photo ?
+                // foundPhoto.author.id is a mongoose object vs. req.user._id is a String
+                // console.log(foundPhoto.author.id);
                 // console.log(req.user._id);
-                if (foundCampground.author.id.equals(req.user._id)) {
+                if (foundPhoto.author.id.equals(req.user._id)) {
                     next();
                 } else {
                     req.flash("error", "You do not have permission to do that!");
@@ -38,8 +38,8 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
             if (err) {
                 res.redirect("back");
             } else {
-                //  does the user own the campground ?
-                // foundCampground.author.id is a mongoose object vs. req.user._id is a String
+                //  does the user own the photo ?
+                // foundPhoto.author.id is a mongoose object vs. req.user._id is a String
                 //console.log(foundComment.author.id);
                 //console.log(req.user._id);
                 if (foundComment.author.id.equals(req.user._id)) {
