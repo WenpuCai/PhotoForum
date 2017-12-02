@@ -24,7 +24,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
     Photo.findById(req.params.id, function(err, photo) {
         if (err) {
             console.log(err);
-            res.redirect("/campgrounds");
+            res.redirect("/photos");
         } else {
             Comment.create(req.body.comment, function(err, comment){
                 if (err) {
@@ -37,7 +37,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
                     photo.comments.push(comment);
                     photo.save();
                     req.flash("success", "Successfully added comment!");
-                    res.redirect("/campgrounds/" + photo._id);
+                    res.redirect("/photos/" + photo._id);
                 }
             });
         }
@@ -62,7 +62,7 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, 
             res.redirect("back");
         } else {
             res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
-        }                                            // this id comes from app.js in which we defined app.use("/campgrounds/:id/comments", commentRoutes);
+        }                                            // this id comes from app.js in which we defined app.use("/photos/:id/comments", commentRoutes);
     })
 })
 
@@ -75,7 +75,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
             res.redirect("back");
         } else {
             req.flash("success", "Comment updated!");
-            res.redirect("/campgrounds/" + req.params.id);
+            res.redirect("/photos/" + req.params.id);
         }
     })
 });
@@ -87,7 +87,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
             res.redirect("back");
         } else {
             req.flash("success", "Comment deleted!");
-            res.redirect("/campgrounds/" + req.params.id);
+            res.redirect("/photos/" + req.params.id);
         }
     })
 });
