@@ -51,7 +51,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                     res.redirect("/campgrounds");
                 }
             });
-        });
+    });
 });
 
 /* NEW - Display form to create new campgrounds */
@@ -102,7 +102,6 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
                 res.redirect("/campgrounds/" + updatedCampground._id);
             }
         });
-    }
   });
 });
 
