@@ -61,7 +61,7 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, 
         if (err) {
             res.redirect("back");
         } else {
-            res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+            res.render("comments/edit", {photo._id: req.params.id, comment: foundComment});
         }                                            // this id comes from app.js in which we defined app.use("/photos/:id/comments", commentRoutes);
     })
 })
