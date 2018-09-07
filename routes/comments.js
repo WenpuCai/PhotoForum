@@ -19,7 +19,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
 });
 
 // Comments Create
-router.post("/photos/:id", middleware.isLoggedIn, function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
     //  lookup photo using ID
     Photo.findById(req.params.id, function(err, photo) {
         if (err) {

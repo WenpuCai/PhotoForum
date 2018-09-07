@@ -53,7 +53,7 @@ app.use(function(req, res, next){
 });// app.use(middleware) whatever function we provide in it will be called on every route
 
 app.use(indexRoutes);
-app.use("/photos",photoRoutes); // append "/photos" before the routes
+app.use("/photos",photoRoutes); // insert "/photos" before the routes,all routes should start with "/photo" 
 app.use("/photos/:id/comments", commentRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
