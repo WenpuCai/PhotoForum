@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 
     <div class="row">
-        <h1 style="text-align: center">Edit <%= photo.name %></h1>
+        <h1 style="text-align: center">Edit Comments</h1>
         <div style="width: 30%; margin: 25px auto;"><!--Center the components-->
             <form action="/photos/<%= photo_id %>/comments/<%= comment._id%>?_method=PUT" method="POST"> <!-- sent to the routes defined in app.js -->
                 <div class="form-group"><!--Give some space among the components-->
