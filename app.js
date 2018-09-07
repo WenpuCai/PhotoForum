@@ -60,6 +60,6 @@ app.listen(process.env.PORT, process.env.IP, function(){
     console.log("The Server has started !");
 });
 
-// var listener = app.listen(8888, function(){
-//     console.log('Listening on port ' + listener.address().port); //Listening on port 8888
+// app.listen(3000, function(){
+//     console.log("The Server has started !"); //Listening on port 3000
 // });
